@@ -17,11 +17,12 @@
     }
       function startTimer()
       {
-         for(let i=0;i<4;i++)
+        let rand1 =Math.floor(Math.random()*100)
+         for(let i=0;i<rand1;i++)
          {
           setTimeout(()=>{
         document.getElementById('countdown').innerHTML=i
-         },(1000*(3-i)))
+         },(100))
          }
          setTimeout(()=>{
         if(myTime==undefined)
@@ -32,7 +33,7 @@
             {
               var buttonTime = Date.now()
               var difference = buttonTime - myTime
-              document.getElementById("target").innerHTML ="time was " + difference
+              document.getElementById("target").innerHTML ="time was" + difference
             }
       },3000)
 

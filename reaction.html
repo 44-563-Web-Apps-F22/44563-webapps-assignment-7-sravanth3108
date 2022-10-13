@@ -7,25 +7,47 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+  <script> 
+    var myTime = undefined
+    function recordReact() 
+    {
+      myTime=Date.now()
+      console.log(myTime)
+    }
+      function startTimer()
+      {
+         for(let i=0;i<4;i++)
+         {
+          setTimeout(()=>{
+        document.getElementById('countdown').innerHTML=i
+         },(1000*(3-i)))
+         }
+         setTimeout(()=>{
+        if(myTime==undefined)
+            {
+                document.getElementById("target").innerHTML="Too Slow"
+            }
+            else
+            {
+              var buttonTime = Date.now()
+              var difference = buttonTime - myTime
+              document.getElementById("target").innerHTML ="time was " + difference
+            }
+      },3000)
+
+            
+         
+    }
+  
+  
+    </script>
   <h2>Sravanth Kumar Reddy Pullamgari Reaction Timer</h2>
 </head>
 <body>
  <p id="target" style="color:blue" >Your time</p>
  <p id = "countdown" style="color:blueviolet">Count</p>
-  <button type="button"  class="btn btn-primary"   onclick="recordReact()">  Start Timer</button>
-  <button type="button"   class="btn btn-success"  onclick="buttonPress2()">  React Now</button>
-
-  
-  <script> 
-  var myTime = undefined
-  function recordReact() {
-    myTime=Date.now()
-    console.log(myTime)
-    }
-
-
-  </script>
-
+  <button type="button"  class="btn btn-primary"   onclick="startTimer()">  Start Timer</button>
+  <button type="button"   class="btn btn-success"  onclick="recordReact()">  React Now</button>
 </body>
 </html>

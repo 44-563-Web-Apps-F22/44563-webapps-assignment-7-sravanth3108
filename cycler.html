@@ -26,16 +26,19 @@
 
 
 <body>
-	<input type="text" style="border:5px solid black;margin:10px"></input>
+	<p> Enter the text</p>
+	<input type="text" style="border:5px solid black;margin-bottom:10px"></input>
 		<div class="flex-container" id="target">
 		  <div class="cycler">row item 1</div>   
 		  <div class="cycler">row item 2</div>  
-		  <div class="cycler">row item 3</div>  
+		  <div class="cycler">row item 3</div> 
 		</div>
 	
 	<p> Press the button to create an new element of type div and then add it to the container.
 		</p>
 		<button onclick="makeNewDiv()">Add value</button>
+		<button class="btn btn-primary" onclick="get">Get</button>
+		<button class="btn btn-secondary">Get</button>
 	
 	
 </body>
@@ -50,6 +53,10 @@
 		let container = document.getElementById('target')
 		container.appendChild(element)
 		
+	}
+	function get()
+	{
+
 	}
 </script>
 </html>	

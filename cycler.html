@@ -27,7 +27,7 @@
 
 <body>
 	<p> Enter the text</p>
-	<input type="text" style="border:5px solid black;margin-bottom:10px"></input>
+	<input type="text" id="text" style="border:5px solid black;margin-bottom:10px"></input>
 		<div class="flex-container" id="target">
 		  <div class="cycler">row item 1</div>   
 		  <div class="cycler">row item 2</div>  
@@ -37,8 +37,8 @@
 	<p> Press the button to create an new element of type div and then add it to the container.
 		</p>
 		<button onclick="makeNewDiv()">Add value</button>
-		<button class="btn btn-primary" onclick="get">Get</button>
-		<button class="btn btn-secondary">Get</button>
+		<button class="btn btn-primary" onclick="get()">Get</button>
+		<button class="btn btn-secondary" onclick ="spin()">Spin</button>
 	
 	
 </body>
@@ -46,17 +46,35 @@
 	function makeNewDiv(){
 		/* make the div and its text */
 		let element = document.createElement("div")
-		element.innerHTML = "an item after 3"
+		element.innerHTML = document.getElementById("text").value
 		element.style.color = "orange"
+		element.className="cycler"
 
 		/* add it to the container */
 		let container = document.getElementById('target')
 		container.appendChild(element)
 		
 	}
-	function get()
-	{
+	function get(){
 
+     var cyclerItems =document.getElementsByClassName('cycler')
+	 let length = cyclerItems.length
+	 console.log(length)
+	 if(length>0)
+	 {
+		cyclerItems[cyclerItems.length-1].remove()
+	 }	
+    }
+	function spin()
+	{
+     var cyclerItems =document.getElementsByClassName('cycler')
+	 if(cyclerItems.length!=0||cyclerItems.length!=1)
+	 {
+		var removedItem = cyclerItems[cyclerItems.length-1]
+		cyclerItems[cyclerItems.length-1].remove()
+		target.insertBefore(removedItem,target.firstChild)
+	 }
+		
 	}
 </script>
 </html>	

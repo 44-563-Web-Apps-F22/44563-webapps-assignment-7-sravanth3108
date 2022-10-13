@@ -38,7 +38,8 @@
 		</p>
 		<button onclick="makeNewDiv()">Add value</button>
 		<button class="btn btn-primary" onclick="get()">Get</button>
-		<button class="btn btn-secondary" onclick ="spin()">Spin</button>
+		<button class="btn btn-secondary" onclick ="spin()">Spin</button>		
+		<button class="btn btn-success" onclick ="swap()">Swap</button>
 	
 	
 </body>
@@ -76,5 +77,17 @@
 	 }
 		
 	}
+	function swap()
+	{
+		var cyclerItems =document.getElementsByClassName('cycler')
+	  let rand1 =Math.floor(Math.random()*(cyclerItems.length))
+	  let rand2= Math.floor(Math.random()*(cyclerItems.length))
+	   let swap1=cyclerItems[rand1]
+	   let swap2 = cyclerItems[rand2]	   
+		target.insertBefore(swap1,cyclerItems[rand2])
+		target.insertBefore(swap2,cyclerItems[rand1])
+
+	}
+	   
 </script>
 </html>	

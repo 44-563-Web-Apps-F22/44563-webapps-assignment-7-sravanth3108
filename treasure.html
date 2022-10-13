@@ -11,49 +11,102 @@
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" 
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+    <script>
+       var strArray =["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"]
+       var chestCount=0
+       var score=0
+       var lastCheck=12
+       var treasurelocation=18
+       function check(position)
+       {
+        if(position==18)
+        {
+          checked = document.getElementById(strArray[position]);
+          checked.setAttribute("src","t2.jpg")
+          score=score+1
+          chestCount= chestCount+1
+        }
+        else
+        {
+          checked = document.getElementById(strArray[position]);
+          checked.setAttribute("src","t3.jpg")
+          chestCount=chestCount+1
+        }
+        document.getElementById("chests").innerHTML="Number of chests checked is "+chestCount
+        document.getElementById("score").innerHTML="Score is "+ score
+        lastCheck=position
+      }
+      function help()
+      {
+        rowb =parseInt(lastCheck / 5)
+        colb = lastCheck % 5
+        rowt= parseInt(treasurelocation / 5)
+        colt=treasurelocation % 5
+        score=score+2
+        document.getElementById("score").innerHTML="Score is "+ score
+        if(rowb == rowt)
+        {
+        if(lastCheck>treasurelocation)
+        document.getElementById("help").innerHTML="left"
+        else        
+        document.getElementById("help").innerHTML="right"
+        }
+        else if(colb==colt && rowb!=rowt)
+        {
+          if(lastCheck>treasurelocation)
+        document.getElementById("help").innerHTML="up"
+        else        
+        document.getElementById("help").innerHTML="down"
+        }
+        else
+        document.getElementById("help").innerHTML="Sorry, no help available"
+
+      }
+       
+    </script>
 </head>
 <body>
     <div class ="container" style="position:center; left: 5; padding: 10px;   ">
     <h1>Treasure Hunt Pullamgari Sravanth Kumar Reddy</h1>
     <p style="color:green">Click on the chests to search for treasure</p>
-    <p style="color:blueviolet"id="chests">Number of chests checked is zero.</p>
-    <p style="color:darkmagenta"id="score">Score is unknown</p>
-    <p style="color:black"id="help">Help report</p>         
+    <p style="color:blueviolet" id="chests">Number of chests checked is zero.</p>
+    <p style="color:darkmagenta" id="score">Score is unknown</p>
+    <p style="color:black" id="help">Help report</p>         
     <div class="container" style="height:60%;width:100%;">
     <div class="row">
-        <div class="col-sm-2" style="border:solid 2px black;padding:2px" ><img src = "treasure.jfif" style="position:center;height:100px;width:110px"></div>
-        <div class="col-sm-2" style="border:solid 2px black"><img src = "treasure.jfif"style="position: relative;height:100px;width:110px"></div>
-        <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"style="position:center;height:100px;width:110px"></div>
-        <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
-        <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
+        <div class="col-sm-2" style="border:solid 2px black;padding:2px" ><img src = "treasure.jfif" style="position:center;height:100px;width:110px" id ="1" onclick = "check(0)"></div>
+        <div class="col-sm-2"   style="border:solid 2px black"><img src = "treasure.jfif"  id="2"style="position: relative;height:100px;width:110px" onclick = "check(1)" ></div>
+        <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  id="3" onclick = "check(2)" style="position:center;height:100px;width:110px"></div>
+        <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" onclick = "check(3)" id="4"style="position: relative;height:100px;width:110px"></div>
+        <div class="col-sm-2"  style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" onclick = "check(4)"  id="5"style="position: relative;height:100px;width:110px"></div>
         </div>
         <div class="row">
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px" ><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2"style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"    style="border:solid 2px black;padding:2px" ><img src = "treasure.jfif"  id="6" onclick = "check(5)"style="position: relative;height:100px;width:110px" onclick = "check(5)"></div>
+            <div class="col-sm-2"   style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  id="7" onclick = "check(6)" style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  id="8" onclick = "check(7)"  style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"  style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" onclick = "check(8)"  id="9"style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"  style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  onclick = "check(9)" id="10"style="position: relative;height:100px;width:110px"></div>
             </div>
         <div class="row">
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "help.jpg"style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"    style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" onclick = "check(10)"  id="11"style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"    style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  id="12" onclick = "check(11)" style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"   style="border:solid 2px black;padding:2px"><img src = "help.jpg"  id="13" onclick = "help()"  style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"    style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" onclick = "check(13)" id="14" style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"   style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  onclick = "check(14)" id="15" style="position: relative;height:100px;width:110px"></div>
         </div>
          <div class="row">
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
-             <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"   style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  id="16" onclick = "check(15)"style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"   style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  id="17"onclick = "check(16)"style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"    style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" id="18"onclick = "check(17)"style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"    style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  id="19" onclick = "check(18)"style="position: relative;height:100px;width:110px"></div>
+             <div class="col-sm-2"   style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  id="20" onclick = "check(19)" style="position: relative;height:100px;width:110px"></div>
         </div>
         <div class="row">
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
-            <div class="col-sm-2" style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"  style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  id="21" onclick = "check(20)"style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"   style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  id="22" onclick = "check(21)" style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"  style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  id="23" onclick = "check(22)" style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"   style="border:solid 2px black;padding:2px"><img src = "treasure.jfif"  id="24" onclick = "check(23)" style="position: relative;height:100px;width:110px"></div>
+            <div class="col-sm-2"    style="border:solid 2px black;padding:2px"><img src = "treasure.jfif" id= "25" onclick = "check(24)"style="position: relative;height:100px;width:110px" ></div>
           </div>
         </div> 
          </div>
